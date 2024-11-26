@@ -93,8 +93,7 @@ public class AutomationAnalystAssignment {
 		}
 		System.out.println("Selected CPT Codes : CPT-99091,CPT-99453,CPT-99454 and CPT-99474.");
 
-		// Update the value 820 in the text field to get Total Recurring Reimbursement
-		// for all Patients Per Month: $110700
+		// Update the value 820 in the text field to get Total Recurring Reimbursement for all Patients Per Month: $110700
 		jse.executeScript("window.scrollBy(0, -350)");
 		act.moveToElement(element).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
 		element.sendKeys("820");
