@@ -38,7 +38,6 @@ public class AutomationAnalystAssignment {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		WebElement slider = driver.findElement(By.xpath("//input[@type='range']"));
 
-
 		// Adjust the slider position at 820 position
 		jse.executeScript("window.scrollBy(0, 200)");
 
@@ -82,7 +81,8 @@ public class AutomationAnalystAssignment {
 		// Find all checkboxes on the page
 		List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
 
-		// Select the checkboxes for CPT-99091, CPT-99453, CPT-99454, and CPT-99474 on their index
+		// Select the checkboxes for CPT-99091, CPT-99453, CPT-99454, and CPT-99474 on
+		// their index
 		for (int i = 0; i < checkboxes.size(); i++) {
 			WebElement checkbox = checkboxes.get(i);
 
@@ -93,6 +93,16 @@ public class AutomationAnalystAssignment {
 		}
 		System.out.println("Selected CPT Codes : CPT-99091,CPT-99453,CPT-99454 and CPT-99474.");
 
+		// Update the value 820 in the text field to get Total Recurring Reimbursement
+		// for all Patients Per Month: $110700
+		jse.executeScript("window.scrollBy(0, -350)");
+		act.moveToElement(element).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+		element.sendKeys("820");
+		System.out.println(
+				"Update the value 820 in the text field to get Total Recurring Reimbursement for all Patients Per Month: $110700.");
+
+		jse.executeScript("window.scrollBy(0, 300)");
+
 		// Validating "Total Recurring Reimbursement for all Patients Per Month:"
 		// Locate the WebElement for "Total Recurring Reimbursement for all Patients Per Month:".
 		WebElement reimbursementElement = driver
@@ -100,12 +110,13 @@ public class AutomationAnalystAssignment {
 
 		String reimbursementText = reimbursementElement.getText();
 
-		String expectedReimbursement = "$75600";
+		String expectedReimbursement = "$110700";
 		if (reimbursementText.equals(expectedReimbursement)) {
-			System.out.println("Verified the Total Recurring Reimbursement for all Patients Per Month : $75600.");
+			System.out.println("Verified the Total Recurring Reimbursement for all Patients Per Month : $110700.");
 		} else {
-			System.out.println("Verified the Total Recurring Reimbursement for all Patients Per Month :$75600. Expected: " + expectedReimbursement + ", Actual: "
-					+ reimbursementText);
+			System.out
+					.println("Verified the Total Recurring Reimbursement for all Patients Per Month :$110700. Expected: "
+							+ expectedReimbursement + ", Actual: " + reimbursementText);
 		}
 		driver.quit();
 
